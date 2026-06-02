@@ -8,31 +8,24 @@ Original file is located at
 """
 
 from google.colab import files
-
 uploaded = files.upload()
 
 import os
-
 print(os.listdir())
 
 import pandas as pd
-
 df = pd.read_csv('marketing_campaign_performance_10000.csv')
-
 print(df.head())
 
 print("Missing Values:")
 print(df.isnull().sum())
-
 print("\nDuplicate Rows:")
 print(df.duplicated().sum())
 
 channel_roi = df.groupby('Channel')['ROI'].mean().sort_values(ascending=False)
-
 print(channel_roi)
 
 revenue = df.groupby('Channel')['Revenue_USD'].sum().sort_values(ascending=False)
-
 print(revenue)
 
 df['ConversionRate'] = (
@@ -44,11 +37,10 @@ conversion = (
     .mean()
     .sort_values(ascending=False)
 )
-
 print(conversion)
 
-import matplotlib.pyplot as plt
 
+import matplotlib.pyplot as plt
 funnel = [
     df['Impressions'].sum(),
     df['Clicks'].sum(),
@@ -68,15 +60,12 @@ plt.plot(labels, funnel, marker='o')
 plt.title('Marketing Funnel Analysis')
 plt.ylabel('Count')
 plt.show()
-
 channel_roi.plot(kind='bar')
-
 plt.title('Average ROI by Marketing Channel')
 plt.ylabel('ROI')
 plt.show()
 
+
 print(channel_roi)
-
 print(revenue)
-
 print(conversion)
