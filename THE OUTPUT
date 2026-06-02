@@ -1,0 +1,150 @@
+OUTPUT AND THE CODES
+
+[1] from google.colab import files
+uploaded = files.upload()
+
+OUTPUT
+marketing_campaign_performance_10000 (1) (1).csv(text/csv) - 812440 bytes, last modified: 6/1/2026 - 100% done
+Saving marketing_campaign_performance_10000 (1) (1).csv to marketing_campaign_performance_10000.csv
+
+[2] import pandas as pd
+df = pd.read_csv('marketing_campaign_performance_10000.csv')
+print(df.head())
+
+OUTPUT
+  CampaignID   StartDate     EndDate     Channel  Impressions  Clicks  Leads  \
+0  CAMP00001  2025-04-13  2025-04-19      Search       293520   23335  11643   
+1  CAMP00002  2025-12-15  2025-12-24      Search       200340   15841   6601   
+2  CAMP00003  2025-09-28  2025-10-06       Email       239365   16478   8043   
+3  CAMP00004  2025-04-17  2025-04-30      Search       156382    2672   1014   
+4  CAMP00005  2025-03-13  2025-03-22  Influencer       285472    4155   1521   
+
+   Conversions  Cost_USD  Revenue_USD   ROI  
+0         5389   1052.39      2236.02  1.12  
+1         2498   3964.90     11740.15  1.96  
+2         3397   1000.39      1902.24  0.90  
+3          342   1252.63      2209.74  0.76  
+4          565   4935.48     14111.31  1.86  
+
+[3] print("Missing Values:")
+    print(df.isnull().sum())
+    print("\nDuplicate Rows:")
+    print(df.duplicated().sum())
+
+OUTPUT
+Missing Values:
+CampaignID     0
+StartDate      0
+EndDate        0
+Channel        0
+Impressions    0
+Clicks         0
+Leads          0
+Conversions    0
+Cost_USD       0
+Revenue_USD    0
+ROI            0
+dtype: int64
+Duplicate Rows:
+0
+
+[4] channel_roi = df.groupby('Channel')['ROI'].mean().sort_values(ascending=False)
+    print(channel_roi)
+
+OUTPUT
+Channel
+Search        1.013389
+Email         1.009990
+Display       0.999304
+Influencer    0.997529
+Social        0.988020
+Name: ROI, dtype: float64
+
+[5] revenue = df.groupby('Channel')['Revenue_USD'].sum().sort_values(ascending=False)
+    print(revenue)
+
+OUTPUT
+Channel
+Display       10715125.21
+Influencer    10558118.99
+Email         10130542.61
+Search         9897677.79
+Social         9725024.70
+Name: Revenue_USD, dtype: float64
+
+[6] df['ConversionRate'] = (
+    df['Conversions'] / df['Clicks']
+) * 100
+
+conversion = (
+    df.groupby('Channel')['ConversionRate']
+    .mean()
+    .sort_values(ascending=False)
+)
+print(conversion)
+
+OUTPUT
+Channel
+Social        12.136829
+Email         12.121959
+Search        12.114953
+Display       12.111601
+Influencer    11.988883
+Name: ConversionRate, dtype: float64
+
+[7] import matplotlib.pyplot as plt
+funnel = [
+    df['Impressions'].sum(),
+    df['Clicks'].sum(),
+    df['Leads'].sum(),
+    df['Conversions'].sum()
+]
+labels = [
+    'Impressions',
+    'Clicks',
+    'Leads',
+    'Conversions'
+]
+plt.figure(figsize=(8,5))
+plt.plot(labels, funnel, marker='o')
+plt.title('Marketing Funnel Analysis')
+plt.ylabel('Count')
+plt.show()
+
+OUTPUT
+THE MARKETING LABEL ANALYSIS FUNNEL GRAPH 
+
+[8] channel_roi.plot(kind='bar')
+plt.title('Average ROI by Marketing Channel')
+plt.ylabel('ROI')
+plt.show()
+
+OUTPUT
+THE BAR GRAPH SHOWING THE AVG ROI
+
+[9] print(channel_roi)
+    print(revenue)
+    print(conversion)
+
+OUTPUT
+Channel
+Search        1.013389
+Email         1.009990
+Display       0.999304
+Influencer    0.997529
+Social        0.988020
+Name: ROI, dtype: float64
+Channel
+Display       10715125.21
+Influencer    10558118.99
+Email         10130542.61
+Search         9897677.79
+Social         9725024.70
+Name: Revenue_USD, dtype: float64
+Channel
+Social        12.136829
+Email         12.121959
+Search        12.114953
+Display       12.111601
+Influencer    11.988883
+Name: ConversionRate, dtype: float64
