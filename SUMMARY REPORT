@@ -1,19 +1,19 @@
-#Marketing Campaign Performance Analysis
+THE SUMMARY EDA REPORT
 
-Objective
+OBJECTIVE
 The objective of this analysis was to evaluate marketing campaign performance across different channels and identify which channels should receive increased budget allocation based on Return on Investment (ROI), revenue generation, and conversion efficiency.
 
-Data Cleaning
+DATA CLEANING
 The dataset was examined for missing values and duplicate records to ensure data quality and reliability. No major data quality issues were identified, allowing the analysis to be conducted on a clean and consistent dataset.
 
-Funnel Analysis
+FUNNEL ANALYSIS
 The marketing funnel analysis revealed a substantial decline in customer volume at each stage of the funnel, from Impressions to Clicks, Clicks to Leads, and Leads to Conversions. While the campaigns generated strong visibility and reach, the results indicate opportunities to improve audience engagement and conversion effectiveness.
 
-Channel Performance Analysis
+CHANNEL PERFORMANCE ANALYSIS
 Average ROI was calculated for each marketing channel to assess overall profitability. Search and Email marketing channels demonstrated the highest average ROI values, indicating stronger returns on marketing investments. Display and Influencer channels delivered moderate performance, while Social media campaigns generated comparatively lower ROI.
 Revenue analysis further showed that high-performing channels contributed significantly to overall revenue generation, reinforcing their effectiveness. Conversion rate analysis provided additional insights into channel efficiency by measuring the percentage of clicks that resulted in conversions. Channels with higher conversion rates exhibited stronger customer acquisition performance and better campaign effectiveness.
 
-Recommendations
+RECOMMENDATIONS
 Based on ROI, revenue, and conversion performance, the following recommendations are proposed:
 * Increase budget allocation for Search and Email marketing campaigns, as they provide the highest returns on investment.
 * Maintain current investment levels for Display and Influencer campaigns while continuously monitoring their performance.
@@ -21,5 +21,5 @@ Based on ROI, revenue, and conversion performance, the following recommendations
 * Focus on reducing funnel drop-offs through improved ad creatives, optimized landing pages, and stronger call-to-action strategies.
 * Regularly monitor campaign metrics to ensure marketing budgets are allocated to the most effective channels.
 
-Conclusion
+CONCLUSION
 The analysis indicates that Search and Email channels deliver the strongest overall marketing performance and should receive additional budget allocation. Improving conversion efficiency across the marketing funnel can further enhance campaign effectiveness, maximize ROI, and support better business outcomes. These findings provide valuable insights for optimizing future marketing investments and improving overall campaign performance.
